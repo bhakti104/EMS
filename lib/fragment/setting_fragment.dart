@@ -36,7 +36,7 @@ class _SettingFragmentState extends State<SettingFragment> {
                             children: [
                               InkWell(
                                   onTap: (() {
-                                    Get.back();
+                                    Get.toNamed('main_setting');
                                   }),
                                   child: Image.asset(
                                       color: colorWhite,

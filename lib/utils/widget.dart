@@ -166,35 +166,83 @@ Widget textField(BuildContext context, TextEditingController controller,
   );
 }
 
-AppBar actionBar(bool isBack, String title) {
-  return AppBar(
-    title: Center(
+Widget actionBar(BuildContext context, String title, bool isBack) {
+  return Container(
+    //height: MediaQuery.of(context).size.height *0.09,
+    height: AppBar().preferredSize.height,
+    decoration: const BoxDecoration(
+      color: colorApp,
+      /*borderRadius: BorderRadius.only(
+          bottomRight: Radius.circular(25),
+          bottomLeft: Radius.circular(25),
+        )*/
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(8),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Visibility(
-              visible: isBack,
-              child: InkWell(
-                  onTap: (() {
-                    Get.back();
-                  }),
-                  child: Image.asset(
-                      color: colorWhite, icBack, height: 25, width: 25))),
+          const SizedBox(
+            width: 5,
+          ),
+
+          isBack
+              ? InkWell(
+              onTap: (() {
+                Get.back();
+              }),
+              child: Image.asset(icBack, height: 25, width: 25))
+              : SizedBox(
+            width: AppBar().preferredSize.height / 2,
+            height: AppBar().preferredSize.height / 2,
+          ),
+
+          const SizedBox(
+            width: 20,
+          ),
+
           Expanded(
             child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                title,
-                style: whiteTitle(),
+              alignment: Alignment.centerLeft,
+              child: /*Image.asset(appIcon, height: 50, width: 50),*/
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(
+                  title,
+                  style: heading1(colorWhite),
+                ),
               ),
             ),
           ),
+          /*Text(
+            DateFormat('dd MMM, yyyy \n hh:mm a', 'en_US')
+                .format(DateTime.now()),
+            style: TextStyle(
+                fontSize: 14, fontFamily: "Regular", color: colorWhite),
+          ),
+          const SizedBox(
+            width: 10,
+          ),*/
+          // InkWell(
+          //   onTap: (() {
+          //     Get.toNamed('/notification');
+          //   }),
+          //   child: const Icon(
+          //     Icons.notifications,
+          //     color: colorWhite,
+          //   ),
+          // ),
+          // const SizedBox(
+          //   width: 10,
+          // ),
+          //Visibility(visible: isBack, child: const SizedBox(width: 25))
         ],
       ),
     ),
-    backgroundColor: colorApp,
-    automaticallyImplyLeading: false,
   );
 }
+
 
 TextStyle whiteTitle() {
   return const TextStyle(fontSize: 16.0, color: colorWhite);

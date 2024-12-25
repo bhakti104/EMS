@@ -108,7 +108,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 4),
                     child: Text(
-                      firstName ?? '',
+                      'Bhakti Mehta',
+                      // firstName ?? '',
                       style: heading2(colorGray,ff: 2)
                     ),
                   ),
@@ -123,6 +124,72 @@ class _HomeDrawerState extends State<HomeDrawer> {
             height: 1,
             color: colorGray.withOpacity(0.6),
           ),
+
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              children: [
+
+                Row(
+                  children: [
+                    Text(
+                      'Name',
+                      style: textRegularBlackColor(),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Bhakti',
+                      style: textRegularBlackColor(),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Mobile no',
+                      style: textRegularBlackColor(),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      '123456789',
+                      style: textRegularBlackColor(),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Designation',
+                      style: textRegularBlackColor(),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Collector',
+                      style: textRegularBlackColor(),
+                    ),
+
+                  ],
+                ),             const SizedBox(
+                  height: 5,
+                ),
+
+
+              ],
+            ),
+          ),
+
           Expanded(
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),

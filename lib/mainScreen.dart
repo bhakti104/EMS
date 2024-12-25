@@ -8,6 +8,7 @@ import 'package:namo_demo/fragment/home_fragment.dart';
 import 'package:namo_demo/fragment/report_fragment.dart';
 import 'package:namo_demo/fragment/search_fragment.dart';
 import 'package:namo_demo/fragment/setting_fragment.dart';
+import 'package:namo_demo/language/languages.dart';
 import 'package:namo_demo/stories/story_model.dart';
 import 'package:namo_demo/theming/theme_manager.dart';
 import 'package:namo_demo/utils/colors.dart';
@@ -40,7 +41,7 @@ class _MainscreenState extends State<Mainscreen>
   late CurvedAnimation curve;
 
   late int initialStoryIndex;
-  late List<StoryModel> stories;
+  // late List<StoryModel> stories;
 
   List<BottomMenu> menuList = <BottomMenu>[];
 
@@ -74,7 +75,8 @@ class _MainscreenState extends State<Mainscreen>
     super.initState();
 
     setState(() {
-      menuList.add(BottomMenu(icHome, 'Home',));
+      menuList.add(BottomMenu(icHome, 'Home'));
+      // menuList.add(BottomMenu(icHome, Languages.of(context)!.labelHome,));
       menuList.add(BottomMenu(icDashboard, 'Dashboard'));
       menuList.add(BottomMenu(icReport, 'Report'));
       menuList.add(BottomMenu(icSetting, 'Setting'));

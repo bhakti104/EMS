@@ -25,7 +25,7 @@ class _DrawerLeftState extends State<DrawerLeft> {
 
   @override
   void initState() {
-    screenView = const LoginScreen();
+    // screenView = const WelCome();
     super.initState();
 
   }
@@ -34,12 +34,12 @@ class _DrawerLeftState extends State<DrawerLeft> {
     FlutterStatusbarcolor.setStatusBarColor(colorApp);
 
     return Container(
-      color: colorWhite,
+      color: colorApp,
       child: SafeArea(
         top: false,
         bottom: false,
         child: Scaffold(
-          backgroundColor: colorOffWhite,
+          backgroundColor: colorApp,
           body: WillPopScope(
             onWillPop: onWillPop,
             child: DrawerUserController(
@@ -59,51 +59,31 @@ class _DrawerLeftState extends State<DrawerLeft> {
 
   _getDrawerItemWidget( menu) {
     switch (menu.menuId) {
-      // case 1:
-      //   return const Mainscreen();
-      // case 15:
-      //   return const Mainscreen ();
-      // case 16:
-      //   return const Gallery();
-      // case 18:
-      //   return const OrderList();
-      // case 7:
-      //   return const ContactMaster();
-      // case 13:
-      //   return const ChangePassword();
-      // case 19:
-      //   return const AccountMaster();
-      // case 50:
-      //   return const OrderEntryTrading();
-    // case 48:
-    //   return const IssueEntry();
-    // case 14:
-    //   return const Approval();
-    // case 57:
-    //   return const ReceiveEntry();
+      case 1:
+        return const Mainscreen();
+      case 15:
+        return const Mainscreen();
+
     // case 56:
     //   openScanner();
     //   return dashboard();
-
       // default:
       //   return SalePurchaseReport(key: Key(menu.menuName!), type: menu.menuName!);
     }
   }
 
   Future<bool> onWillPop() {
-
-
-    if(screenView != const LoginScreen()){
+    if(screenView != const Mainscreen()){
       setState(() {
-        screenView = const LoginScreen();
+        screenView = const Mainscreen();
       });
       return Future.value(false);
     }else{
       exitDialog(context);
       return Future.value(false);
     }
-
   }
+
   exitDialog(BuildContext context) {
     showDialog<void>(
         context: context,

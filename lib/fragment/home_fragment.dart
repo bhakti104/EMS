@@ -1,8 +1,17 @@
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:namo_demo/custom_drawer/drawer_user_controller.dart';
+import 'package:namo_demo/language/language_data_model.dart';
+import 'package:namo_demo/language/languages.dart';
+import 'package:namo_demo/language/locale_constant.dart';
+import 'package:namo_demo/mainScreen.dart';
+import 'package:namo_demo/menu_response.dart';
 import 'package:namo_demo/stories/story_model.dart';
+import 'package:namo_demo/stories/users_data.dart';
 import 'package:namo_demo/utils/colors.dart';
 import 'package:namo_demo/utils/images.dart';
 import 'package:namo_demo/utils/string.dart';
@@ -10,6 +19,10 @@ import 'package:namo_demo/utils/widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:story/story_image.dart';
 import 'package:story/story_page_view.dart';
+import 'package:flutter/material.dart';
+import 'package:namo_demo/language/language_data_model.dart';
+import 'package:namo_demo/language/languages.dart';
+import 'package:namo_demo/language/locale_constant.dart';
 
 class HomeFragment extends StatefulWidget {
   const HomeFragment({
@@ -19,34 +32,6 @@ class HomeFragment extends StatefulWidget {
   @override
   State<HomeFragment> createState() => _HomeFragmentState();
 }
-
-final sampleUsers = [
-  UserModel([
-    StoryModel(
-        "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxN3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    StoryModel(
-        "https://images.unsplash.com/photo-1609418426663-8b5c127691f9?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    StoryModel(
-        "https://images.unsplash.com/photo-1609444074870-2860a9a613e3?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1Nnx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    StoryModel(
-        "https://images.unsplash.com/photo-1609504373567-acda19c93dc4?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1MHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-  ], "User1",
-      "https://images.unsplash.com/photo-1609262772830-0decc49ec18c?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMDF8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-  UserModel([
-    StoryModel(
-        "https://images.unsplash.com/photo-1609439547168-c973842210e1?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4Nnx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-  ], "User2",
-      "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwzMjN8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-  UserModel([
-    StoryModel(
-        "https://images.unsplash.com/photo-1609421139394-8def18a165df?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMDl8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    StoryModel(
-        "https://images.unsplash.com/photo-1609377375732-7abb74e435d9?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxODJ8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    StoryModel(
-        "https://images.unsplash.com/photo-1560925978-3169a42619b2?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMjF8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-  ], "User3",
-      "https://images.unsplash.com/photo-1609127102567-8a9a21dc27d8?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzOTh8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-];
 
 class _HomeFragmentState extends State<HomeFragment>
     with SingleTickerProviderStateMixin {
@@ -101,7 +86,9 @@ class _HomeFragmentState extends State<HomeFragment>
                           child: Row(
                             children: [
                               InkWell(
-                                  onTap: (() {}),
+                                  onTap: (() {
+                                    Get.toNamed('/drawer_main');
+                                  }),
                                   child: Image.asset(
                                       color: colorWhite,
                                       imgProfile,
@@ -115,6 +102,7 @@ class _HomeFragmentState extends State<HomeFragment>
                                 alignment: Alignment.topRight,
                                 child: InkWell(
                                     onTap: (() {
+                                      // _createLanguageDropDown(context);
                                       _showLanguageDialog(context);
                                     }),
                                     child: Image.asset(
@@ -125,7 +113,8 @@ class _HomeFragmentState extends State<HomeFragment>
                               ),
                               const SizedBox(width: 10),
                               InkWell(
-                                  onTap: (() {}),
+                                  onTap: (() {
+                                  }),
                                   child: Image.asset(
                                       color: colorWhite,
                                       icNotification,
@@ -141,39 +130,60 @@ class _HomeFragmentState extends State<HomeFragment>
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('STORIES', style: bodyText1(colorApp, ff: 1)),
+
+                            Text(Languages.of(context)!.labelStories,
+                                style: bodyText1(colorApp, ff: 1)),
                             SizedBox(height: 10),
                             Row(
                               children: [
-                                InkWell(
-                                    onTap: (() {
-                                      Get.toNamed('/story');
-                                    }),
-                                    child: Image.asset(
-                                        color: colorBlackDark,
-                                        icRound,
-                                        height: 50,
-                                        width: 50)),
+                                Column(
+                                  children: [
+                                    InkWell(
+                                        onTap: (() {
+                                          Get.toNamed('/story');
+                                          // Get.toNamed('/story', arguments: users);
+                                        }),
+                                        child: Image.asset(
+                                            color: colorBlackDark,
+                                            icRound,
+                                            height: 50,
+                                            width: 50)),
+                                    Text('ImageOne',
+                                        style: bodyText3(colorBlack, ff: 1)),
+                                  ],
+                                ),
                                 SizedBox(width: 20),
-                                InkWell(
-                                    onTap: (() {
-                                      Get.toNamed('/story');
-                                    }),
-                                    child: Image.asset(
-                                        color: colorBlackDark,
-                                        icRound,
-                                        height: 50,
-                                        width: 50)),
+                                Column(
+                                  children: [
+                                    InkWell(
+                                        onTap: (() {
+                                          Get.toNamed('/story');
+                                        }),
+                                        child: Image.asset(
+                                            color: colorBlackDark,
+                                            icRound,
+                                            height: 50,
+                                            width: 50)),
+                                    Text('ImageTwo',
+                                        style: bodyText3(colorBlack, ff: 1)),
+                                  ],
+                                ),
                                 SizedBox(width: 20),
-                                InkWell(
-                                    onTap: (() {
-                                      Get.toNamed('/story');
-                                    }),
-                                    child: Image.asset(
-                                        color: colorBlackDark,
-                                        icRound,
-                                        height: 50,
-                                        width: 50)),
+                                Column(
+                                  children: [
+                                    InkWell(
+                                        onTap: (() {
+                                          Get.toNamed('/story');
+                                        }),
+                                        child: Image.asset(
+                                            color: colorBlackDark,
+                                            icRound,
+                                            height: 50,
+                                            width: 50)),
+                                    Text('ImageThree',
+                                        style: bodyText3(colorBlack, ff: 1)),
+                                  ],
+                                ),
                               ],
                             ),
                             SizedBox(height: 15),
@@ -217,10 +227,37 @@ class _HomeFragmentState extends State<HomeFragment>
   }
 }
 
-void _showLanguageDialog(BuildContext context) {
+_createLanguageDropDown(BuildContext context) {
+  return DropdownButton<LanguageData>(
+    iconSize: 30,
+    hint: Text(Languages.of(context)!.labelSelectLanguage),
+    onChanged: (LanguageData? language) {
+      changeLanguage(context, language!.languageCode);
+    },
+    items: LanguageData.languageList()
+        .map<DropdownMenuItem<LanguageData>>(
+          (e) => DropdownMenuItem<LanguageData>(
+            value: e,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text(
+                  e.flag,
+                  style: TextStyle(fontSize: 30),
+                ),
+                Text(e.name)
+              ],
+            ),
+          ),
+        )
+        .toList(),
+  );
+}
+
+void _showLanguageDialog(context) {
   showDialog(
     context: context,
-    builder: (BuildContext context) {
+    builder: (BuildContext context,) {
       return AlertDialog(
         title: Text('Select Language', style: blackTitle()),
         content: Column(
@@ -230,8 +267,9 @@ void _showLanguageDialog(BuildContext context) {
               title: const Text('English',
                   style: TextStyle(fontSize: 14.0, color: colorBlackDark)),
               onTap: () {
-                // Implement language change logic
-                Navigator.of(context).pop();
+                //english
+                changeLanguage(context, 'en');
+                Get.back();
               },
             ),
             ListTile(
@@ -239,7 +277,8 @@ void _showLanguageDialog(BuildContext context) {
                   style: TextStyle(fontSize: 14.0, color: colorBlackDark)),
               onTap: () {
                 // Implement language change logic
-                Navigator.of(context).pop();
+                changeLanguage(context, 'gu');
+                Get.back();
               },
             ),
             ListTile(
@@ -247,7 +286,8 @@ void _showLanguageDialog(BuildContext context) {
                   style: TextStyle(fontSize: 14.0, color: colorBlackDark)),
               onTap: () {
                 // Implement language change logic
-                Navigator.of(context).pop();
+                changeLanguage(context, 'hi');
+                Get.back();
               },
             ),
             // Add more languages as needed
