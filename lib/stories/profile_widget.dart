@@ -14,7 +14,8 @@ class ProfileWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Material(
+  Widget build(BuildContext context) =>
+      Material(
         type: MaterialType.transparency,
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 16, vertical: 48),
@@ -32,8 +33,8 @@ class ProfileWidget extends StatelessWidget {
                   children: <Widget>[
                     //username
                     Text(
-                      user.name,
-                      style: heading2(colorWhite,)
+                        user.name,
+                        style: heading2(colorWhite,)
                     ),
                     Text(
                       date,

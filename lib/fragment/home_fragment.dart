@@ -24,6 +24,8 @@ import 'package:namo_demo/language/language_data_model.dart';
 import 'package:namo_demo/language/languages.dart';
 import 'package:namo_demo/language/locale_constant.dart';
 
+import '../stories/story_page.dart';
+
 class HomeFragment extends StatefulWidget {
   const HomeFragment({
     Key? key,
@@ -143,8 +145,14 @@ class _HomeFragmentState extends State<HomeFragment>
                                   children: [
                                     InkWell(
                                         onTap: (() {
-                                          Get.toNamed('/story');
-                                          // Get.toNamed('/story', arguments: users);
+                                          // Get.toNamed('/story');
+
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) => StoryPage(user: users[0]),
+                                            ),
+                                          );
+
                                         }),
                                         child: Image.asset(
                                             color: colorBlackDark,
