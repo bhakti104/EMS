@@ -14,14 +14,12 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-
+  share_plus: ^10.1.3
   get: ^4.6.6
   cupertino_icons: ^1.0.8
   flutter_easyloading: ^3.0.5
   shared_preferences: ^2.0.8
-#  shared_preferences: ^2.3.4
   fluttertoast: ^8.0.8
-#  connectivity: ^3.0.6
   flutter_statusbarcolor_ns: ^0.6.0
   animated_bottom_navigation_bar: ^1.3.3
   flutter_web3_provider: ^2.0.2
@@ -30,11 +28,8 @@ dependencies:
   smooth_page_indicator: ^1.2.0+3
   story: ^1.1.0
   story_view: ^0.16.5
-
-  intl: ^0.19.0
-  video_player: ^2.8.2
-
-
+  path_provider: ^2.1.3
+  dio: ^5.4.3+1
 
 dev_dependencies:
   flutter_test:
@@ -55,6 +50,7 @@ flutter:
     - assets/images/img_user.png
     - assets/images/img_ems.png
     - assets/images/img_one.jpeg
+    - assets/images/no_img.png
 
     - assets/icons/ic_arrow.png
     - assets/icons/ic_settings.png
@@ -68,4 +64,10 @@ flutter:
 
     - assets/icons/ic_mail.png
     - assets/icons/ic_pass.png
+    - assets/icons/ic_like.png
+    - assets/icons/ic_share.png
+    - assets/icons/ic_delete.png
+    - assets/icons/ic_attach.png
+    - assets/icons/ic_circle.png
+    - assets/icons/ic_square.png
 

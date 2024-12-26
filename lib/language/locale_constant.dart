@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:namo_demo/language/language_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
@@ -26,8 +25,7 @@ Locale _locale(String languageCode) {
       ? Locale(languageCode, '')
       : Locale('en', '');
 }
-
 void changeLanguage(BuildContext context, String selectedLanguageCode) async {
   var _locale = await setLocale(selectedLanguageCode);
-  LanguageMain.setLocale(context, _locale);
+  // LanguageMain.setLocale(context, _locale);
 }

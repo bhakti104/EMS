@@ -18,6 +18,12 @@ Widget verticalViewBig() {
   );
 }
 
+Widget horizontalView() {
+  return const SizedBox(
+    width: 10,
+  );
+}
+
 TextStyle textExtraBoldBlack() {
   return const TextStyle(
       fontSize: 32,

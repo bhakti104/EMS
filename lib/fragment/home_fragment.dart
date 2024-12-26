@@ -102,8 +102,12 @@ class _HomeFragmentState extends State<HomeFragment>
                                 alignment: Alignment.topRight,
                                 child: InkWell(
                                     onTap: (() {
-                                      // _createLanguageDropDown(context);
-                                      _showLanguageDialog(context);
+
+                                        setState(() {
+                                          _showLanguageDialog(context);
+
+                                        });
+
                                     }),
                                     child: Image.asset(
                                         color: colorWhite,
@@ -130,7 +134,6 @@ class _HomeFragmentState extends State<HomeFragment>
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-
                             Text(Languages.of(context)!.labelStories,
                                 style: bodyText1(colorApp, ff: 1)),
                             SizedBox(height: 10),
@@ -227,32 +230,6 @@ class _HomeFragmentState extends State<HomeFragment>
   }
 }
 
-_createLanguageDropDown(BuildContext context) {
-  return DropdownButton<LanguageData>(
-    iconSize: 30,
-    hint: Text(Languages.of(context)!.labelSelectLanguage),
-    onChanged: (LanguageData? language) {
-      changeLanguage(context, language!.languageCode);
-    },
-    items: LanguageData.languageList()
-        .map<DropdownMenuItem<LanguageData>>(
-          (e) => DropdownMenuItem<LanguageData>(
-            value: e,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Text(
-                  e.flag,
-                  style: TextStyle(fontSize: 30),
-                ),
-                Text(e.name)
-              ],
-            ),
-          ),
-        )
-        .toList(),
-  );
-}
 
 void _showLanguageDialog(context) {
   showDialog(
@@ -267,9 +244,11 @@ void _showLanguageDialog(context) {
               title: const Text('English',
                   style: TextStyle(fontSize: 14.0, color: colorBlackDark)),
               onTap: () {
-                //english
-                changeLanguage(context, 'en');
-                Get.back();
+                // setState(() {
+                  changeLanguage(context, 'en');
+                  Get.back();
+                // });
+
               },
             ),
             ListTile(

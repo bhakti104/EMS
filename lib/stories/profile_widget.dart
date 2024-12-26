@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:namo_demo/stories/user.dart';
+import 'package:namo_demo/utils/colors.dart';
+import 'package:namo_demo/utils/widget.dart';
 
 class ProfileWidget extends StatelessWidget {
   final User user;
@@ -31,15 +33,11 @@ class ProfileWidget extends StatelessWidget {
                     //username
                     Text(
                       user.name,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                      style: heading2(colorWhite,)
                     ),
                     Text(
                       date,
-                      style: TextStyle(color: Colors.white38),
+                      style: heading2(colorWhite),
                     )
                   ],
                 ),

@@ -4,8 +4,8 @@ import 'package:namo_demo/auth/signUpScreen.dart';
 import 'package:namo_demo/auth/splashScreen.dart';
 import 'package:namo_demo/custom_drawer/drawerLeft.dart';
 import 'package:namo_demo/fragment/search_fragment.dart';
-import 'package:namo_demo/language/language_main.dart';
 import 'package:namo_demo/mainScreen.dart';
+import 'package:namo_demo/share/share_gallery.dart';
 import 'package:namo_demo/stories/story_list_page.dart';
 import 'package:namo_demo/stories/user.dart';
 
@@ -19,8 +19,7 @@ class Router {
     GetPage(name: '/search_fragment', page: () => const SearchFragment()),
     // GetPage(name: '/story', page: () => StoryListPage()),
     GetPage(name: '/story', page: () => StoryListPage()),
-    GetPage(name: '/languageMain', page: () => LanguageMain()),
-
     GetPage(name: '/drawer_main', page: () => const DrawerLeft()),
+    GetPage(name: '/share_gallery', page: () => const ShareGallery()),
   ];
 }
